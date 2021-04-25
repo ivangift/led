@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <script>
+              let tt = null;
+
+      function toggle() {
+        const render = document.getElementById("render");
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext('2d');
+        let round = 0;
+        if (render.innerText == "Start") {
+          render.innerText = "Stop";
+          tt = setInterval(() => {
+            round ++;
+            if (round % 2) {
+              ctx.fillStyle = 'red';
+            } else {
+              ctx.fillStyle = 'green';
+            }
+            ctx.fillRect(20, 20, 30, 30);
+          }, document.getElementById("interval").value);
+        } else {
+          render.innerText = "Start";
+          clearInterval(tt);
+        }
+        
+      }
+    </script>
+  </head>
+  <body style="background-color: black;">
+    <input id="interval" value="10"></input><button id="render" onclick="toggle()">Start</button>
+    <div>
+    <canvas id="canvas" width="50" height="50"></canvas>
+  </div>
+  </body>
+</html>
